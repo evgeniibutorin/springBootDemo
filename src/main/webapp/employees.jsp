@@ -19,7 +19,6 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Position</th>
-                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
