@@ -37,6 +37,8 @@
                 </tr>
             </c:forEach>
             </tbody>
+<%--            <br /><a href="<%=request.getContextPath()%>/similar/show/">Similar</a>--%>
+            <br /><a href="<%=request.getContextPath()%>/similar/remover/">Remove similar employee</a>
         </table>
     </c:when>
     <c:otherwise>

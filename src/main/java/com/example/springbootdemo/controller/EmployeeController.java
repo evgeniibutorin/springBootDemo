@@ -81,4 +81,17 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
+    @GetMapping("/similar/remover")
+    public String removeSimilarEmployee(ModelMap employeeModel) {
+        List<Employee> employees = employeeService.deleteSimilarEmployees();
+        employeeModel.addAttribute("employees", employees);
+        return "employees";
+    }
+//    @GetMapping("/similar/show")
+//    public String showSimilarEmployee(ModelMap employeeModel) {
+//        List<Employee> employees = employeeService.someEmployee();
+//        employeeModel.addAttribute("employees", employees);
+//        return "employees";
+//    }
+
 }

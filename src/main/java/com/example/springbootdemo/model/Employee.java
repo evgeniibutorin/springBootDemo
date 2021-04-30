@@ -5,18 +5,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
     private int id;
 
+    @Column(name = "name")
     @Getter
     @Setter
     private String name;
 
+    @Column(name = "position")
     @Getter
     @Setter
     private String position;
@@ -25,5 +33,6 @@ public class Employee {
         this.name = name;
         this.position = position;
     }
+
 }
 
