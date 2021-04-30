@@ -1,10 +1,8 @@
 package com.example.springbootdemo.controller;
 
-import com.example.springbootdemo.dao.EmployeeDao;
 import com.example.springbootdemo.model.Employee;
 import com.example.springbootdemo.service.EmployeeService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +14,7 @@ import java.util.List;
 @Controller
 public class EmployeeController {
 
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
@@ -65,10 +63,7 @@ public class EmployeeController {
     @PostMapping("/update/employee")
     public String updateEmployee(@RequestParam int id, @RequestParam(value = "name", required = true) String name,
                                  @RequestParam(value = "position", required = true) String position, ModelMap employeeModel) {
-        Employee employee = new Employee(id,name,position);
-        /*
-         * employee.setId(id); employee.setName(name); employee.setPosition(position);
-         */
+        Employee employee = new Employee(id, name, position);
         employeeService.updateEmployee(employee);
         List<Employee> employees = employeeService.getEmployees();
         employeeModel.addAttribute("employees", employees);
