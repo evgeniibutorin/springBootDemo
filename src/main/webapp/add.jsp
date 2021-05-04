@@ -2,9 +2,9 @@
          pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-<title>Spring Boot MVC and JDBC CRUD Example</title>
+<title>Spring Boot MVC and JDBC Hibernate Example</title>
 <body>
-<h2>Spring Boot MVC and JDBC CRUD Example</h2>
+<h2>Spring Boot MVC and JDBC Hibernate Example</h2>
 <c:if test="${not empty msg}">
     ${msg}
 </c:if>

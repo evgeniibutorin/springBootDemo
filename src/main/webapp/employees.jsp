@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
-<title>Spring Boot MVC and JDBC CRUD Example</title>
+<title>Spring Boot MVC and Hibernate CRUD Example</title>
 <body>
 <h2>Spring Boot MVC and JDBC CRUD Example</h2>
 <a href="<%=request.getContextPath()%>/addEmployee">Add</a>
@@ -29,11 +29,14 @@
                     <td>${t.position}</td>
                     <td><a
                             href="<%=request.getContextPath()%>/employee/${t.id}">Details</a>
-                        &nbsp;<a
+                       <a
                                 href="<%=request.getContextPath()%>/update/employee/${t.id}">Update</a>
                         &nbsp; <a
                                 href="<%=request.getContextPath()%>/delete/employee/${t.id}"
-                                onclick="return confirm('Do you really want to delete?')">Delete</a></td>
+                                onclick="return confirm('Do you really want to delete?')">Delete</a>
+                        <a
+                                href="<%=request.getContextPath()%>/teg/${t.id}">Add teg</a>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
