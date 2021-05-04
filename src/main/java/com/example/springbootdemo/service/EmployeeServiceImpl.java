@@ -3,11 +3,6 @@ package com.example.springbootdemo.service;
 
 import com.example.springbootdemo.model.Employee;
 import com.example.springbootdemo.repository.EmployeeRepository;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
-import org.springframework.data.jpa.provider.HibernateUtils;
-import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -69,8 +64,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         return repository.findAll();
     }
 
-//    @Override
-//    public List<Employee> someEmployee() {
-//        return repository.getList();
-//    }
+    @Override
+    public List<Employee> findEmployeeByName(String name){
+        return repository.findEmployeeByName(name);
+    }
+
 }

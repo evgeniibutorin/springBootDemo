@@ -87,11 +87,14 @@ public class EmployeeController {
         employeeModel.addAttribute("employees", employees);
         return "employees";
     }
-//    @GetMapping("/similar/show")
-//    public String showSimilarEmployee(ModelMap employeeModel) {
-//        List<Employee> employees = employeeService.someEmployee();
-//        employeeModel.addAttribute("employees", employees);
-//        return "employees";
-//    }
+
+    @GetMapping("/get/employee")
+    public String getEmployeesByName(@RequestParam(value = "name") String name, ModelMap employeeModel){
+        List<Employee> employees = employeeService.findEmployeeByName(name);
+        employeeModel.addAttribute("employees",employees);
+        return "employees";
+    }
+
+
 
 }

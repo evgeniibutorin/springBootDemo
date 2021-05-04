@@ -12,5 +12,5 @@ public interface EmployeeService {
     void updateEmployee(Employee employee);
     void deleteEmployee(int id);
     List<Employee> deleteSimilarEmployees();
-    //List<Employee> someEmployee();
+    List<Employee> findEmployeeByName(String name);
 }

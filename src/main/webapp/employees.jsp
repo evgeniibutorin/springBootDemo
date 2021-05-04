@@ -38,7 +38,13 @@
             </c:forEach>
             </tbody>
 <%--            <br /><a href="<%=request.getContextPath()%>/similar/show/">Similar</a>--%>
-            <br /><a href="<%=request.getContextPath()%>/similar/remover/">Remove similar employee</a>
+            <br /><a href="<%=request.getContextPath()%>/similar/remover/">Remove similar employee</a><br /> <br />
+            <br /> <br />
+            <form method="GET" name="get_employee_by_name"
+                  action="<%=request.getContextPath()%>/get/employee">
+                Name: <input name="name" value="${name}" type="text" /> <br /> <br />
+                <input value="Get Employee" type="submit" />
+            </form>
         </table>
     </c:when>
     <c:otherwise>
