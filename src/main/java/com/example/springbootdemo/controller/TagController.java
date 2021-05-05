@@ -71,15 +71,12 @@ public class TagController {
     public String updateTag(@RequestParam("id") int id, @RequestParam(value = "tag", required = true) String tagName,
                                  ModelMap tagModel) {
         Employee employee = tagService.getTag(id).getEmployee();
-        Tag tag = new Tag();
-        tag.setTag(tagName);
-        tag.setEmployee(employee);
-        tagService.deleteTag(id);
-        tagService.updateTag(tag);
+        Tag oldTag = tagService.getTag(id);
+        oldTag.setTag(tagName);
+        tagService.updateTag(oldTag);
         List<Tag> tags = tagService.getTagsByEmployeeId(employee.getId());
         tagModel.addAttribute("tags", tags);
         tagModel.addAttribute("employee", employee);
-        tagModel.addAttribute("msg", "Tag updated successfully");
         return "teg";
     }
 

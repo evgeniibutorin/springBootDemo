@@ -1,6 +1,7 @@
 package com.example.springbootdemo.controller;
 
 import com.example.springbootdemo.model.Employee;
+import com.example.springbootdemo.model.Tag;
 import com.example.springbootdemo.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -63,7 +64,8 @@ public class EmployeeController {
     @PostMapping("/update/employee")
     public String updateEmployee(@RequestParam int id, @RequestParam(value = "name", required = true) String name,
                                  @RequestParam(value = "position", required = true) String position, ModelMap employeeModel) {
-        Employee employee = new Employee(id, name, position);
+        List<Tag> tags = employeeService.getEmployee(id).getTags();
+        Employee employee = new Employee(id, name, position, tags);
         employeeService.updateEmployee(employee);
         List<Employee> employees = employeeService.getEmployees();
         employeeModel.addAttribute("employees", employees);

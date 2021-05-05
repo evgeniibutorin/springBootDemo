@@ -30,18 +30,20 @@ public class Employee {
     @Setter
     private String position;
 
-//    @Getter
-//    @Setter
-//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-//    List<Tag> tags;
-//
-//    public Employee(String name, String position) {
-//        this.name = name;
-//        this.position = position;
-//    }
+    @Getter
+    @Setter
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "employee")
+    List<Tag> tags;
 
+    public Employee(String name, String position) {
+        this.name = name;
+        this.position = position;
+    }
 
-
-
+    public Employee(int id, String name, String position) {
+        this.id = id;
+        this.name = name;
+        this.position = position;
+    }
 }
 

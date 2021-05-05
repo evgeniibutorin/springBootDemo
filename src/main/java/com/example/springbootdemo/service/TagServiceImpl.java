@@ -18,10 +18,6 @@ public class TagServiceImpl implements TagService {
     EmployeeRepository employeeRepository;
     TagRepository tagRepository;
 
-//       public TagServiceImpl(TagRepository tagRepository) {
-//        this.tagRepository = tagRepository;
-//    }
-
     @Override
     public Tag getTag(int id) {
         return tagRepository.findById(id).get();

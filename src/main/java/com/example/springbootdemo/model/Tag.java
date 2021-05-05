@@ -26,8 +26,9 @@ public class Tag {
 
     @Setter
     @Getter
-    @ManyToOne(fetch = FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "employee_id", nullable = false)//name - (Необязательно) Имя столбца внешнего ключа. nullable - (Необязательно) Может ли столбец внешнего ключа допускать значение NULL
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    //, cascade = CascadeType.ALL
+    @JoinColumn(name = "employee_id", nullable = false, referencedColumnName = "id")//name - (Необязательно) Имя столбца внешнего ключа. nullable - (Необязательно) Может ли столбец внешнего ключа допускать значение NULL referencedColumnName - связывает с полем родительской сущности
     private Employee employee;
 
 }
