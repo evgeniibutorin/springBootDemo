@@ -19,6 +19,8 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Position</th>
+                <th>Action</th>
+                <th>List of tags</th>
             </tr>
             </thead>
             <tbody>
@@ -37,6 +39,7 @@
                         <a
                                 href="<%=request.getContextPath()%>/teg/${t.id}">Work with a tag</a>
                     </td>
+                    <td><c:forEach var="r" items="${t.tags}">${r.tag}</c:forEach></td>
                 </tr>
             </c:forEach>
             </tbody>
