@@ -35,7 +35,7 @@
                                 href="<%=request.getContextPath()%>/delete/employee/${t.id}"
                                 onclick="return confirm('Do you really want to delete?')">Delete</a>
                         <a
-                                href="<%=request.getContextPath()%>/teg/${t.id}">Add teg</a>
+                                href="<%=request.getContextPath()%>/teg/${t.id}">Work with a tag</a>
                     </td>
                 </tr>
             </c:forEach>

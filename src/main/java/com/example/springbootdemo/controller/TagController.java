@@ -59,14 +59,22 @@ public class TagController {
         return "teg";
     }
 
+    @GetMapping("/update/tag/{id}")
+    public String updateTag(@PathVariable("id") int id, ModelMap modelMap) {
+        modelMap.addAttribute("id", id);
+        Tag tag = tagService.getTag(id);
+        modelMap.addAttribute("tag", tag);
+        return "updateTag";
+    }
 
-    @PostMapping("/update/tag/{id}")
-    public String updateTag(@PathVariable("id") int id, @RequestParam(value = "tag", required = true) String tagName,
+    @PostMapping("/update/tag")
+    public String updateTag(@RequestParam("id") int id, @RequestParam(value = "tag", required = true) String tagName,
                                  ModelMap tagModel) {
         Employee employee = tagService.getTag(id).getEmployee();
         Tag tag = new Tag();
         tag.setTag(tagName);
         tag.setEmployee(employee);
+        tagService.deleteTag(id);
         tagService.updateTag(tag);
         List<Tag> tags = tagService.getTagsByEmployeeId(employee.getId());
         tagModel.addAttribute("tags", tags);
@@ -74,4 +82,7 @@ public class TagController {
         tagModel.addAttribute("msg", "Tag updated successfully");
         return "teg";
     }
+
+
+
 }

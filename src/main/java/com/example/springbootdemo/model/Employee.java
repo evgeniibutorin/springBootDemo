@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -29,10 +30,18 @@ public class Employee {
     @Setter
     private String position;
 
-    public Employee(String name, String position) {
-        this.name = name;
-        this.position = position;
-    }
+//    @Getter
+//    @Setter
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+//    List<Tag> tags;
+//
+//    public Employee(String name, String position) {
+//        this.name = name;
+//        this.position = position;
+//    }
+
+
+
 
 }
 
