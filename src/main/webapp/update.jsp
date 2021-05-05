@@ -14,8 +14,10 @@
     <input hidden="hidden" name="id" value="${id}" type="text" /> Name: <input
         name="name" value="${employee.name}" type="text" /> <br /> <br />
     Position: <input name="position" value="${employee.position}"
-                      type="text" /> <br /> <br /> <input value="Update User"
-                                                          type="submit" />
+                      type="text" /> <br /> <br />
+    Position: <input name="address" value="${employee.address}"
+                     type="text" /> <br /> <br />
+    <input value="Update User" type="submit" />
 </form>
 </body>
 </html>

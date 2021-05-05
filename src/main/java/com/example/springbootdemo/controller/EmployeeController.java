@@ -1,7 +1,9 @@
 package com.example.springbootdemo.controller;
 
+import com.example.springbootdemo.model.Address;
 import com.example.springbootdemo.model.Employee;
 import com.example.springbootdemo.model.Tag;
+import com.example.springbootdemo.service.AddressService;
 import com.example.springbootdemo.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,9 +18,11 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
+    private final AddressService addressService;
 
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeService employeeService, AddressService addressService) {
         this.employeeService = employeeService;
+        this.addressService = addressService;
     }
 
     @GetMapping("/employee/{id}")
@@ -40,18 +44,28 @@ public class EmployeeController {
         return "add";
     }
 
+
+
+
     @PostMapping("/add/employee")
     public String addEmployee(@RequestParam(value = "name", required = true) String name,
-                              @RequestParam(value = "position", required = true) String position, ModelMap employeeModel) {
+                              @RequestParam(value = "position", required = true) String position,
+                              @RequestParam(value = "address", required = true) String address,ModelMap employeeModel) {
+        Address address1 = new Address(address);
+        addressService.addAddress(address1);
         Employee employee = new Employee();
         employee.setName(name);
         employee.setPosition(position);
+        employee.setAddress(address1);
         employeeService.addEmployee(employee);
         employeeModel.addAttribute("msg", "Employee added successfully");
         List<Employee> employees = employeeService.getEmployees();
         employeeModel.addAttribute("employees", employees);
         return "redirect:/employees";
     }
+
+
+
 
     @GetMapping("update/employee/{id}")
     public String updatePage(@PathVariable("id") int id, ModelMap employeeModel) {
@@ -63,9 +77,11 @@ public class EmployeeController {
 
     @PostMapping("/update/employee")
     public String updateEmployee(@RequestParam int id, @RequestParam(value = "name", required = true) String name,
-                                 @RequestParam(value = "position", required = true) String position, ModelMap employeeModel) {
+                                 @RequestParam(value = "position", required = true) String position,
+                                 @RequestParam(value = "address", required = true) String address, ModelMap employeeModel) {
         List<Tag> tags = employeeService.getEmployee(id).getTags();
-        Employee employee = new Employee(id, name, position, tags);
+        Address address1 = addressService.isAddressExist(address);
+        Employee employee = new Employee(id, name, position, tags, address1);
         employeeService.updateEmployee(employee);
         List<Employee> employees = employeeService.getEmployees();
         employeeModel.addAttribute("employees", employees);
@@ -96,7 +112,5 @@ public class EmployeeController {
         employeeModel.addAttribute("employees",employees);
         return "employees";
     }
-
-
 
 }

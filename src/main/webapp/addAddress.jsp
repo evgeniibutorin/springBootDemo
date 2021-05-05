@@ -8,5 +8,14 @@ Id : ${employee.id}
 <br /> Name : ${employee.name}
 <br /> Position : ${employee.position}
 <br /><a href="<%=request.getContextPath()%>/employees">Back to list</a>
+
+<h3>Add address</h3>
+<form method="POST" name="add_address"
+      action="<%=request.getContextPath()%>/update/address">
+    <input hidden="hidden" name="id" value="${id}" type="text" /> Address: <input
+        name="address" value="${address.address}" type="text" /> <br /> <br />
+    <br /> <br />
+    <input value="Add Address for ${employee.name}" type="submit" />
+</form>
 </body>
 </html>

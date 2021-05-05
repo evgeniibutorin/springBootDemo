@@ -31,7 +31,6 @@ public class TagController {
         return "teg";
     }
 
-
     @PostMapping("/add/{id}")
     public String addEmployee(@RequestParam(value = "tag", required = true) String tagName,
                               @PathVariable("id") int employee_id,
@@ -47,7 +46,6 @@ public class TagController {
         tagModel.addAttribute("employee", employee);
         return "teg";
     }
-
 
     @GetMapping("/delete/{employee_id}/tag/{id}")
     public String deleteTag(@PathVariable("id") int id,@PathVariable("employee_id") int employee_id, ModelMap tagModel) {
@@ -79,7 +77,5 @@ public class TagController {
         tagModel.addAttribute("employee", employee);
         return "teg";
     }
-
-
 
 }

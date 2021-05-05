@@ -35,6 +35,12 @@ public class Employee {
     @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "employee")
     List<Tag> tags;
 
+    @Setter
+    @Getter
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name = "address_id", nullable = false, referencedColumnName = "id")
+    Address address;
+
     public Employee(String name, String position) {
         this.name = name;
         this.position = position;
@@ -44,6 +50,13 @@ public class Employee {
         this.id = id;
         this.name = name;
         this.position = position;
+    }
+
+    public Employee(int id, String name, String position, List<Tag> tags) {
+        this.id = id;
+        this.name = name;
+        this.position = position;
+        this.tags = tags;
     }
 }
 

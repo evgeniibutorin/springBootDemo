@@ -12,11 +12,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query("SELECT e FROM Employee e WHERE e.name = :name")
     List<Employee> findEmployeeByName(
             @Param("name") String name);
-
-    //Example with SQL
-//    @Query("SELECT * FROM Employee e WHERE e.name = :name", nativeQuery=true)
-//    List<Employee> findEmployeeByName(
-//            @Param("name") String name);
-
 }
 

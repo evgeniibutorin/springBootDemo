@@ -12,7 +12,8 @@
 <form method="POST" name="add_employee"
       action="<%=request.getContextPath()%>/add/employee">
     Name: <input name="name" value="${name}" type="text" /> <br /> <br />
-    Position: <input name="position" value="${position}" type="text" />
+    Position: <input name="position" value="${position}" type="text" /> <br /> <br />
+    Address: <input name="address" value="${address}" type="text" />
     <br /> <br />
     <input value="Add Employee" type="submit" />
 </form>

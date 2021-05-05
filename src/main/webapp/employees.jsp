@@ -5,7 +5,7 @@
 <html>
 <title>Spring Boot MVC and Hibernate CRUD Example</title>
 <body>
-<h2>Spring Boot MVC and JDBC CRUD Example</h2>
+<h2>Spring Boot MVC and Hibernate CRUD Example</h2>
 <a href="<%=request.getContextPath()%>/addEmployee">Add</a>
 <c:if test="${not empty msg}">
     ${msg}
@@ -38,12 +38,13 @@
                                 onclick="return confirm('Do you really want to delete?')">Delete</a>
                         <a
                                 href="<%=request.getContextPath()%>/teg/${t.id}">Work with a tag</a>
+                        <a
+                                href="<%=request.getContextPath()%>/add/address/${t.id}">Add Address</a>
                     </td>
                     <td><c:forEach var="r" items="${t.tags}">${r.tag}</c:forEach></td>
                 </tr>
             </c:forEach>
             </tbody>
-<%--            <br /><a href="<%=request.getContextPath()%>/similar/show/">Similar</a>--%>
             <br /><a href="<%=request.getContextPath()%>/similar/remover/">Remove similar employee</a><br /> <br />
             <br /> <br />
             <form method="GET" name="get_employee_by_name"
