@@ -44,14 +44,11 @@ public class EmployeeController {
         return "add";
     }
 
-
-
-
     @PostMapping("/add/employee")
     public String addEmployee(@RequestParam(value = "name", required = true) String name,
                               @RequestParam(value = "position", required = true) String position,
                               @RequestParam(value = "address", required = true) String address,ModelMap employeeModel) {
-        Address address1 = new Address(address);
+        Address address1 = addressService.addAddress(address);
         addressService.addAddress(address1);
         Employee employee = new Employee();
         employee.setName(name);
@@ -63,9 +60,6 @@ public class EmployeeController {
         employeeModel.addAttribute("employees", employees);
         return "redirect:/employees";
     }
-
-
-
 
     @GetMapping("update/employee/{id}")
     public String updatePage(@PathVariable("id") int id, ModelMap employeeModel) {
@@ -79,10 +73,7 @@ public class EmployeeController {
     public String updateEmployee(@RequestParam int id, @RequestParam(value = "name", required = true) String name,
                                  @RequestParam(value = "position", required = true) String position,
                                  @RequestParam(value = "address", required = true) String address, ModelMap employeeModel) {
-        List<Tag> tags = employeeService.getEmployee(id).getTags();
-        Address address1 = addressService.isAddressExist(address);
-        Employee employee = new Employee(id, name, position, tags, address1);
-        employeeService.updateEmployee(employee);
+        addressService.getAndUpdateAddress(address, id, name, position);
         List<Employee> employees = employeeService.getEmployees();
         employeeModel.addAttribute("employees", employees);
         employeeModel.addAttribute("id", id);
@@ -95,7 +86,7 @@ public class EmployeeController {
         employeeService.deleteEmployee(id);
         List<Employee> employees = employeeService.getEmployees();
         employeeModel.addAttribute("employees", employees);
-        employeeModel.addAttribute("msg", "Employee delted successfully");
+        employeeModel.addAttribute("msg", "Employee deleted successfully");
         return "redirect:/employees";
     }
 

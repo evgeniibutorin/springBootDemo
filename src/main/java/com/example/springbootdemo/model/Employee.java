@@ -37,7 +37,7 @@ public class Employee {
 
     @Setter
     @Getter
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @ManyToOne(fetch = FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", nullable = false, referencedColumnName = "id")
     Address address;
 
@@ -57,6 +57,13 @@ public class Employee {
         this.name = name;
         this.position = position;
         this.tags = tags;
+    }
+
+    public Employee(int id, String name, String position, Address address) {
+        this.id = id;
+        this.name = name;
+        this.position = position;
+        this.address = address;
     }
 }
 

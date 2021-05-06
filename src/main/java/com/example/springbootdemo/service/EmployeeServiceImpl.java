@@ -1,7 +1,9 @@
 package com.example.springbootdemo.service;
 
 
+import com.example.springbootdemo.model.Address;
 import com.example.springbootdemo.model.Employee;
+import com.example.springbootdemo.repository.AddressRepository;
 import com.example.springbootdemo.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,9 +14,11 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
 
     EmployeeRepository repository;
+    private AddressService addressService;
 
-    public EmployeeServiceImpl(EmployeeRepository repository) {
+    public EmployeeServiceImpl(EmployeeRepository repository, AddressService addressService) {
         this.repository = repository;
+        this.addressService = addressService;
     }
 
     @Override
@@ -41,7 +45,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional(readOnly = false)
-    public void deleteEmployee(final int id) { repository.deleteById(id); }
+    public void deleteEmployee(final int id) {
+        Address address = repository
+                .getOne(id)
+                .getAddress();
+        int s = address.getEmployees().size();
+        repository.deleteById(id);
+
+//        if (s<2){
+//            addressService.deleteAddress(address.getId());
+//        }
+    }
 
     @Override
     @Transactional(readOnly = false)

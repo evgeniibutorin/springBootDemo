@@ -15,7 +15,7 @@
         name="name" value="${employee.name}" type="text" /> <br /> <br />
     Position: <input name="position" value="${employee.position}"
                       type="text" /> <br /> <br />
-    Position: <input name="address" value="${employee.address}"
+    Address: <input name="address" value="${employee.address.address}"
                      type="text" /> <br /> <br />
     <input value="Update User" type="submit" />
 </form>

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,7 +27,7 @@ public class Address {
 
     @Getter
     @Setter
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "address", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "address")
     private List<Employee> employees;
 
     public Address(String address) {

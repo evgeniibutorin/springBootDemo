@@ -21,6 +21,7 @@
                 <th>Position</th>
                 <th>Action</th>
                 <th>List of tags</th>
+                <th>Address</th>
             </tr>
             </thead>
             <tbody>
@@ -38,10 +39,11 @@
                                 onclick="return confirm('Do you really want to delete?')">Delete</a>
                         <a
                                 href="<%=request.getContextPath()%>/teg/${t.id}">Work with a tag</a>
-                        <a
-                                href="<%=request.getContextPath()%>/add/address/${t.id}">Add Address</a>
+<%--                        <a--%>
+<%--                                href="<%=request.getContextPath()%>/add/address/${t.id}">Add Address</a>--%>
                     </td>
                     <td><c:forEach var="r" items="${t.tags}">${r.tag}</c:forEach></td>
+                    <td>${t.address.address}</td>
                 </tr>
             </c:forEach>
             </tbody>
